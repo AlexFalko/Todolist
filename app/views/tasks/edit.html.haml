@@ -1,0 +1,12 @@
+<center>
+<h1>Editing tasks</h1>
+
+= form_with(url: edit_todolist_task_path, local: true) do |form|
+
+    = form.text_field :name
+
+    = form.submit
+
+
+= link_to 'Back', todolists_path
+</center>
