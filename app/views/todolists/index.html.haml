@@ -1,75 +1,75 @@
 <center>
-%nav.navbar.navbar-expand-lg.navbar-light.bg-light
-  %a.navbar-brand{:href => "#"} ToDoList
-  %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
-    %span.navbar-toggler-icon
-  #navbarSupportedContent.collapse.navbar-collapse
-    %ul.navbar-nav.mr-auto
-      %li.nav-item.active
-        %a.nav-link{:href => "#"}
-          Home
-          %span.sr-only (current)
-      %li.nav-item
-        %a.nav-link{:href => "#"} Link
-      %li.nav-item.dropdown
-        %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-          Dropdown
-        .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
-          %a.dropdown-item{:href => "#"} Action
-          %a.dropdown-item{:href => "#"} Another action
-          .dropdown-divider
-          %a.dropdown-item{:href => "#"} Something else here
-      %li.nav-item
-        %a.nav-link.disabled{:href => "#"} Disabled
-    %form.form-inline.my-2.my-lg-0
-      %input.form-control.mr-sm-2{"aria-label" => "Search", :placeholder => "Search", :type => "search"}/
-      %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Search
-
-
+%br
+%br
 %h2
   SIMPLE TODO LISTS
   %br
 %h4
   %small.text-muted FROM RUBY GARAGE
-
-
-
-%p
-%table
-  
-  - @todolists.each do |todolist|
-  
-    %tr
+%br
+.container
+  - @todolists.each do |todolist| 
+    .row.card-header.align-items-center.pr-0
+      .pr-3.text-left.calendar_icon
+        %i.fas.fa-calendar-alt
+      .col-9.text-left.p-0
+        = todolist.title
+      .col-2.text-right.ed_del_icon      
+        = link_to '', edit_todolist_path(todolist), class: 'ed_del_icon fas fa-pencil-alt'
+        = "|"
+        = link_to '', todolist_path(todolist), method: :delete, data: { confirm: 'Вы уверены?' }, class: 'ed_del_icon fas fa-trash-alt'
+          
     
-      %td
-        %strong= todolist.title
-      %td
-        = form_with(url: todolist_tasks_path(todolist.id), local: true) do |form|
-          = form.text_field :name
-          -# = form.check_box :status
-          = form.submit "Add Task"
-      %td= link_to 'Edit', edit_todolist_path(todolist)
-      %td= link_to 'Delete', todolist_path(todolist), method: :delete, data: { confirm: 'Вы уверены?' }        |
-    - todolist.tasks.each do |task|
-      %tr    
-        - if task.status then
-          %td 
-            %strike= task.name
-          %td= check_box_tag 'task_status[]', task.status, true
-        - else
-          %td= task.name
-          %td= check_box_tag 'task_status[]', task.status
-        %td= link_to 'Edit', edit_todolist_task_path(todolist_id: todolist.id,  id: task.id)
-        %td= link_to 'Delete', [task.todolist, task], method: :delete, data: { confirm: 'Вы уверены?' }             |
-        
-     
-%p
-= form_with(model: @todolist, local: true) do |form|
+    .div
+      = form_with(url: todolist_tasks_path(todolist.id)) do |form|
+        .row.p-1.add_task.align-items-center      
+          .col.p-0.plus_icon
+            %i.fas.fa-plus
+            = form.check_box :status  
+          .col-9.p-0  
+            = form.text_field :name, class:'form-control', placeholder: "Start typing here to create a task..."           
+          .col-2.pl-0 
+            = form.submit "Add Task", class: 'btn btn-primary color_button'
   
-  = form.submit "+ Add TODO List", class: 'custom-class'
+        .row.align-items-center.bg-white
+          .col.text-center
+            = form.datetime_select :date_end   
+        
+    .row.text-center.bg-white.card-body.align-items-center.p-0
+      -todolist.tasks.each do |task|
+        - if task.status then
+          .col-1.border.pb_pt
+            = check_box_tag 'task_status[]', task.status,true
+          .col-9.border.pb_pt.text-left
+            %strike= task.name
+        - else
+          .col-1.border.pb_pt
+            = check_box_tag 'task_status[]', task.status
+          .col-9.border.pb_pt.text-left
+            = task.name
+           
+          
+        .col-2.border.pb_pt.text-right
+          = link_to '',todolist_task_path(todolist_id: todolist.id, id: task.id), class: 'fas fa-sort-up'
+          = link_to '',(), class: 'fas fa-sort-down'
+          = "|" 
+          = link_to '', edit_todolist_task_path(todolist_id: todolist.id, id: task.id), class: 'fas fa-pencil-alt'
+          = "|"
+          = link_to '', [task.todolist, task], method: :delete, data: { confirm: 'Вы уверены?' }, class: 'fas fa-trash-alt'
+    %p
 
 
-  -# = form.label :date_end
-  -# = form.date_select("Дата", "written  ")
-  -# = form.datetime_select("task", "written_on") 
 
+  = simple_form_for Todolist.new do |f|   
+    = f.button :submit, "+ Add TODO List", class: 'btn btn-primary add_project'
+
+  %br
+  %p.text-white
+    ="@Ruby   Garage"
+
+
+
+
+
+     
+        

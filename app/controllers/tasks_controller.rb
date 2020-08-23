@@ -1,11 +1,22 @@
 class TasksController < ApplicationController
-      
+ 
+      def index
+          @tasks=Task.all
+          
+      end
+   
       def edit
           @task = Task.find(params[:id])
       end
 
+      def show
+        @task = Task.where(todolist_id: 16).find(params[:id])
+       
+      end
+    
+
       def update
-        @task = Task.find(params[:id])     
+        @task = Task.find(params[:id])   
         if @task.update(task_params)
           redirect_to todolists_path      
         else
@@ -25,11 +36,28 @@ class TasksController < ApplicationController
         @task.destroy
         redirect_to todolists_path
       end
+
+      def upsort
+        @todolist = Todolist.find(params[:todolist_id])
+        todolist.tasks.first.move_to_bottom
+        redirect_to todolists_path
+       
+        
+      end
+
+      def downsort
+        @todolist = Todolist.find(params[:todolist_id])
+        todolist.tasks.last.move_higher
+        redirect_to todolists_path
+        
+      end
+
     
+     
       
      private
         def task_params
-          params.permit(:name, :status)
+          params.permit(:name,:status,:date_end)
         end   
           
           

@@ -35,3 +35,116 @@
   background: rgb(33,147,90);
   box-shadow: 0 3px rgb(33,147,90) inset;}
   
+
+
+  .card-header {
+   background-color: #4165a3;
+   
+   color: ghostwhite;   
+   font-size: 20px;
+  }
+
+  .card-body{
+   background-color: #ffffff;
+   border-radius: 0px 0px 15px 15px;
+  }
+
+ 
+  .add_task{
+   background: -webkit-linear-gradient(top, #dedede, #ccc);
+  }
+
+  .add_project{
+   background-color:#4165a3;
+   border: #4165a3;
+  }
+
+  .plus_icon {
+   color: green;
+   font-size: xx-large;
+
+  }
+
+  .tlc{
+     width: 60px;
+  }
+
+  .sep{
+    width: 5px;
+    padding: 1px !important
+  }
+
+  .fa-pencil-alt{
+     color:rgb(129, 121, 121);
+  }
+
+  .fa-trash-alt{
+   color:rgb(129, 121, 121);
+}
+   .fa-sort-up{
+      color:rgb(129, 121, 121) !important
+   }
+
+   .fa-sort-down{
+      color:rgb(129, 121, 121) !important
+   }
+
+  .tlb{
+   width: 115px;
+}
+
+.pb_pt{
+   padding-bottom: 12px;
+   padding-top: 12px;
+}
+
+
+tr:hover { 
+   background: #ffffbb; /* Цвет фона */
+}
+  .calendar_icon {
+   color: rgb(0, 0, 0);
+   font-size: x-large;
+
+  }
+  .ed_del_icon {
+   color: rgb(226, 226, 226);
+   font-size: large;
+
+  }
+
+  .color_button{
+     background-color: green;
+     border-color: green;
+  }
+
+  .td{
+   border-left-style: none;
+  }
+
+  body{
+   background: linear-gradient(to top, #c77b0c, #d9d5c1);
+   background-repeat: no-repeat;
+   background-position: center center;
+   background-attachment: fixed;
+   background-size: cover;
+   
+  }
+
+  a{
+     color: rgb(255, 255, 255);
+  }
+  
+  .wc{
+     width: 30% !important
+  }
+@media (min-width: 1200px){
+ .container {
+    max-width: 700px;
+}}
+
+@media (min-width: 992px){
+.container {
+    max-width: 700px;
+}}
+
