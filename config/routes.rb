@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'todolists#index'
   devise_for :users
   resources :todolists do
-     resources :tasks 
+    resources :tasks 
   end
   
   
