@@ -21,7 +21,6 @@
           
     
     .div
-      -# = form_with(url: todolist_tasks_path(todolist.id)) do |form|
       = simple_form_for Task.new, url: todolist_tasks_path(todolist.id) do |f|
         .row.p-1.add_task.align-items-center      
           .col.p-0.plus_icon
@@ -39,7 +38,7 @@
       -todolist.tasks.each do |task|
         - if task.status then
           .col-1.border.pb_pt
-            = check_box_tag 'task_status[]', task.status,true
+            = check_box_tag 'task_status[]', task.status, true
           .col-9.border.pb_pt.text-left
             %strike= task.name
         - else
@@ -50,8 +49,8 @@
            
           
         .col-2.border.pb_pt.text-right
-          = link_to '',todolist_task_path(todolist_id: todolist.id, id: task.id), class: 'fas fa-sort-up'
-          = link_to '',(), class: 'fas fa-sort-down'
+          = link_to '', todolist_upsort_path(todolist_id: todolist.id, id: task.id), method: :put, class: 'fas fa-sort-up'
+          = link_to '', todolist_downsort_path(todolist_id: todolist.id, id: task.id), method: :put, class: 'fas fa-sort-down'
           = "|" 
           = link_to '', edit_todolist_task_path(todolist_id: todolist.id, id: task.id), class: 'fas fa-pencil-alt'
           = "|"

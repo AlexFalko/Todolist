@@ -10,7 +10,7 @@ class TasksController < ApplicationController
       end
 
       def show
-        @task = Task.where(todolist_id: 16).find(params[:id])
+        @task = Task.where(id: params[:id])
       end
 
       def update
@@ -36,15 +36,15 @@ class TasksController < ApplicationController
       end
 
       def upsort
-        @todolist = Todolist.find(params[:todolist_id])
-        todolist.tasks.first.move_to_bottom
-        redirect_to todolists_path
+        task = Task.find_by(id: params[:id])
+        task.move_higher
+        redirect_to root_path
       end
 
       def downsort
-        @todolist = Todolist.find(params[:todolist_id])
-        todolist.tasks.last.move_higher
-        redirect_to todolists_path
+        task = Task.find_by(id: params[:id])
+        task.move_lower
+        redirect_to root_path
       end
 
      private

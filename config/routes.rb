@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   
   
   resources :todolists do
-     resources :tasks 
-    end
+     resources :tasks
+     put '/tasks/:id/upsort', to: 'tasks#upsort', as: 'upsort'
+     put '/tasks/:id/downsort', to: 'tasks#downsort', as: 'downsort'
+  end
 end
 
