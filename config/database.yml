@@ -23,6 +23,17 @@
 # production:
 #   <<: *default
 #   database: db/production.sqlite3
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: db29fiheftbfp1
+  pool: 5
+  username: uhfjtoijtqypxq
+  password: 923c2ad5dccc1947508cd082d4b36b91acf80463aa6910fad68bb884cd36a617
+  timeout: 5000
+  port: 5432
+  host: ec2-184-72-162-198.compute-1.amazonaws.com
   
 development:
   adapter: postgresql
