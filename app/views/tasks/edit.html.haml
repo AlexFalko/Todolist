@@ -11,11 +11,8 @@
 -# = link_to 'Back', todolists_path
 -# </center>
 
-
-= form_with(model: @todolist, local: true) do |form|
+= simple_form_for @task, url: todolist_task_path, method: :put do |f|
   %p
-   
-    = form.text_field :name
- 
+    = f.input :name
   %p
-    = form.submit 
+    = f.submit

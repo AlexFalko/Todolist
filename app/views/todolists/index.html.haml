@@ -21,19 +21,19 @@
           
     
     .div
-      = form_with(url: todolist_tasks_path(todolist.id)) do |form|
+      -# = form_with(url: todolist_tasks_path(todolist.id)) do |form|
+      = simple_form_for Task.new, url: todolist_tasks_path(todolist.id) do |f|
         .row.p-1.add_task.align-items-center      
           .col.p-0.plus_icon
             %i.fas.fa-plus
-            = form.check_box :status  
+            = f.input_field :status, as: :boolean
           .col-9.p-0  
-            = form.text_field :name, class:'form-control', placeholder: "Start typing here to create a task..."           
+            = f.input_field :name, class:'form-control', placeholder: "Start typing here to create a task..."           
           .col-2.pl-0 
-            = form.submit "Add Task", class: 'btn btn-primary color_button'
-  
+            = f.submit "Add Task", class: 'btn btn-primary color_button'
         .row.align-items-center.bg-white
           .col.text-center
-            = form.datetime_select :date_end   
+            = f.input_field :date_end, as: :datetime   
         
     .row.text-center.bg-white.card-body.align-items-center.p-0
       -todolist.tasks.each do |task|

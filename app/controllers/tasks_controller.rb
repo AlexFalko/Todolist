@@ -11,9 +11,7 @@ class TasksController < ApplicationController
 
       def show
         @task = Task.where(todolist_id: 16).find(params[:id])
-       
       end
-    
 
       def update
         @task = Task.find(params[:id])   
@@ -41,24 +39,16 @@ class TasksController < ApplicationController
         @todolist = Todolist.find(params[:todolist_id])
         todolist.tasks.first.move_to_bottom
         redirect_to todolists_path
-       
-        
       end
 
       def downsort
         @todolist = Todolist.find(params[:todolist_id])
         todolist.tasks.last.move_higher
         redirect_to todolists_path
-        
       end
 
-    
-     
-      
      private
         def task_params
-          params.permit(:name,:status,:date_end)
+          params.require(:task).permit(:name, :status, :date_end)
         end   
-          
-          
 end
