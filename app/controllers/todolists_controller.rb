@@ -1,13 +1,12 @@
 class TodolistsController < ApplicationController
   before_action :authenticate_user!
+
     def index
       @todolists = Todolist.where(user: current_user)             
     end
 
     def show
       @todolist = Todolist.where(user: current_user).find(params[:id]) 
-      
-      
     end
 
     def new
@@ -18,7 +17,6 @@ class TodolistsController < ApplicationController
       @todolist = Todolist.find(params[:id])
     end
 
-   
     def create
         @todolist = Todolist.new(title: "Project",user_id: current_user.id)
         if @todolist.save
@@ -29,8 +27,7 @@ class TodolistsController < ApplicationController
     end
 
     def update
-        @todolist = Todolist.find(params[:id])   
-       
+        @todolist = Todolist.find(params[:id])      
         if @todolist.update(todolist_params)
           redirect_to todolists_path      
         else
@@ -38,11 +35,11 @@ class TodolistsController < ApplicationController
         end
       end
     
-      def destroy
-        @todolist = Todolist.find(params[:id])
-        @todolist.destroy
-        redirect_to todolists_path
-      end
+    def destroy
+       @todolist = Todolist.find(params[:id])
+       @todolist.destroy
+       redirect_to todolists_path
+     end
 
     
 

@@ -83,10 +83,15 @@
 }
    .fa-sort-up{
       color:rgb(129, 121, 121) !important
+   
    }
 
    .fa-sort-down{
       color:rgb(129, 121, 121) !important
+   }
+
+   .pos{
+      margin-left: -5px;;
    }
 
   .tlb{
@@ -96,11 +101,20 @@
 .pb_pt{
    padding-bottom: 12px;
    padding-top: 12px;
+   
 }
+a { 
+   text-decoration: none !important
+  } 
 
+  a:hover { 
+   font-size: 20px; 
+   font-weight: bold; 
+   color:rgb(196, 168, 145);
+  }
 
 tr:hover { 
-   background: #ffffbb; /* Цвет фона */
+   background: #ffffbb; 
 }
   .calendar_icon {
    color: rgb(0, 0, 0);
@@ -137,6 +151,10 @@ tr:hover {
   
   .wc{
      width: 30% !important
+  }
+
+  .form-group{
+     width: 50%;
   }
 @media (min-width: 1200px){
  .container {

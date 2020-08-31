@@ -50,14 +50,12 @@
           
         .col-2.border.pb_pt.text-right
           = link_to '', todolist_upsort_path(todolist_id: todolist.id, id: task.id), method: :put, class: 'fas fa-sort-up'
-          = link_to '', todolist_downsort_path(todolist_id: todolist.id, id: task.id), method: :put, class: 'fas fa-sort-down'
+          = link_to '', todolist_downsort_path(todolist_id: todolist.id, id: task.id), method: :put, class: 'pos fas fa-sort-down'
           = "|" 
           = link_to '', edit_todolist_task_path(todolist_id: todolist.id, id: task.id), class: 'fas fa-pencil-alt'
           = "|"
           = link_to '', [task.todolist, task], method: :delete, data: { confirm: 'Вы уверены?' }, class: 'fas fa-trash-alt'
     %p
-
-
 
   = simple_form_for Todolist.new do |f|   
     = f.button :submit, "+ Add TODO List", class: 'btn btn-primary add_project'
