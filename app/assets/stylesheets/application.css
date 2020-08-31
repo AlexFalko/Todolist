@@ -153,9 +153,10 @@ tr:hover {
      width: 30% !important
   }
 
-  /* .form-group{
-     width: 50%;
-  } */
+  .p_date{
+   padding-left: 2px;
+   padding-right: 2px;
+  }
 @media (min-width: 1200px){
  .container {
     max-width: 700px;

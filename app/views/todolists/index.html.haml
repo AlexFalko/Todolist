@@ -25,7 +25,7 @@
         .row.p-1.add_task.align-items-center      
           .col.p-0.plus_icon
             %i.fas.fa-plus
-            = f.input_field :status, as: :boolean
+          
           .col-9.p-0  
             = f.input_field :name, class:'form-control', placeholder: "Start typing here to create a task..."           
           .col-2.pl-0 
@@ -39,13 +39,17 @@
         - if task.status then
           .col-1.border.pb_pt
             = check_box_tag 'task_status[]', task.status, true
-          .col-9.border.pb_pt.text-left
+          .col-7.border.pb_pt.text-left
             %strike= task.name
+          .col-2.border.pb_pt.text-center.p_date
+            = task.date_end.to_formatted_s(:short)
         - else
           .col-1.border.pb_pt
             = check_box_tag 'task_status[]', task.status
-          .col-9.border.pb_pt.text-left
+          .col-7.border.pb_pt.text-left
             = task.name
+          .col-2.border.pb_pt.text-center.p_date
+            = task.date_end.to_formatted_s(:short)
            
           
         .col-2.border.pb_pt.text-right
